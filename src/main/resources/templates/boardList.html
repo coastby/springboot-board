@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+
+    <title>자유게시판</title>
+</head>
+<body>
+<br>
+<div class="container">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col" style="width:860px;"><h3>자유게시판</h3></th>
+            </tr>
+            </thead>
+
+        </table>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col" style="width: 80px;">No</th>
+                <th scope="col" style="width: 500px;">제목</th>
+                <th scope="col" style="width: 100px;">글쓴이</th>
+                <th scope="col" style="width: 100px;">작성시간</th>
+                <th scope="col" style="width: 80px;">좋아요</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="board : ${boards}">
+<!--                넘버는 게시글 수부터 역순으로 넣어준다.-->
+                <td th:text="${boardStat.size - boardStat.index}" scope="row"></td>
+                <td th:text="${board.title}"></td>
+                <td th:text="${board.writer}"></td>
+                <td th:text="${board.created}"></td>
+                <td th:text="${board.likes}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" style="float:right;">글쓰기</button>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>
